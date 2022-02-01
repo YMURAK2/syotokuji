@@ -1,0 +1,14 @@
+///////////////////Color/////////////////////
+$white: #ffffff;
+$black: #222222;
+$gray: #707070;
+$l-gray: #f5f5f5;
+
+
+///////////////////font/////////////////////
+@font-face {
+  font-family: "kouzan";
+  src: url("衡山毛筆フォント.ttf");
+}
+$main-font: "Times New Roman", YuMincho, "Yu Mincho", sans-serif;
+$sub-font: "kouzan", sans-serif;

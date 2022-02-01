@@ -1,0 +1,45 @@
+@use "../global/index" as g;
+
+.gnav {
+  &__list {
+    padding: 0 30px;
+
+    li {
+      padding: 10px 0;
+
+      a {
+        display: inline-block;
+        position: relative;
+
+        &::after {
+          display: block;
+          position: absolute;
+          content: "";
+          height: 1px;
+          width: 0;
+          background-color: g.$black;
+          bottom: 0;
+          left: 0;
+          @include g.transition();
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  @include g.mq(md) {
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 20px;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

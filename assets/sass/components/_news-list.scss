@@ -1,0 +1,31 @@
+@use "../global/index" as g;
+
+.news-list {
+  margin: 40px 0;
+
+  &__list {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  &__item {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    padding: 22px 0 15px;
+    border-bottom: 1px solid g.$gray;
+  }
+
+  &__category {
+    margin: 0 20px;
+    font-size: 12px;
+    width: 75px;
+
+    li {
+      border: 1px solid g.$gray;
+      background-color: g.$l-gray;
+      padding: 4px 4px;
+      text-align: center;
+    }
+  }
+}

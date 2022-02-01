@@ -1,0 +1,32 @@
+/////////////////Media Query///////////////////
+$breakpoints: (
+  "sm": "(max-width: 576px)",
+  "md": "(max-width: 768px)",
+  "lg": "(max-width: 992px)",
+  "xl": "(max-width: 1200px)",
+  "xxl": "(max-width: 1400px)",
+) !default;
+
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints,$breakpoint)} {
+    @content;
+  }
+}
+
+/////////////////Animation///////////////////
+@mixin transition(
+  $property: all,
+  $duration: 0.5s,
+  $timing-function: ease,
+  $delay: 0
+) {
+  transition: {
+    property: $property;
+    duration: $duration;
+    timing-function: $timing-function;
+    delay: $delay;
+  }
+}
+
+@mixin animation() {
+}

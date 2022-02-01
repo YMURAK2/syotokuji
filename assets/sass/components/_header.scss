@@ -1,0 +1,106 @@
+@use "../global/index" as g;
+
+.header {
+  position: fixed;
+  z-index: 10;
+  background-color: g.$l-gray;
+  width: 200px;
+  height: 100vh;
+
+  &__menu-btn {
+    display: none;
+  }
+
+  @include g.mq(md) {
+    width: 100%;
+    height: 80px;
+    @include g.transition();
+
+    &.active {
+      position: fixed;
+      height: 100vh;
+      overflow: auto;
+    }
+
+    &__menu-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      @include g.transition();
+
+      &:hover {
+        .header__menu-line::before {
+          top: -10px;
+        }
+
+        .header__menu-line::after {
+          top: 10px;
+        }
+
+        .header__menu-line.active::before {
+          top: 0;
+        }
+
+        .header__menu-line.active::after {
+          top: 0;
+        }
+      }
+    }
+
+    &__menu-line {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background-color: g.$gray;
+
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background-color: g.$gray;
+        @include g.transition();
+      }
+      &::before {
+        top: -8px;
+      }
+      &::after {
+        top: 8px;
+      }
+
+      &.active {
+        background-color: transparent;
+
+        &::before {
+          top: 0;
+          background-color: g.$gray;
+          transform: rotate(135deg);
+        }
+
+        &::after {
+          top: 0;
+          background-color: g.$gray;
+          transform: rotate(-135deg);
+        }
+      }
+    }
+    &__menu-text {
+      color: g.$gray;
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -6px;
+      @include g.transition();
+
+      &.active {
+        display: none;
+      }
+    }
+  }
+}

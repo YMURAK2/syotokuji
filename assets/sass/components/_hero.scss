@@ -1,0 +1,66 @@
+@use "../global/index" as g;
+
+.hero {
+  background-image: url("../img/hero.jpg");
+  background-color: rgba(0, 0, 0, 0.4);
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center center;
+  height: 500px;
+  position: relative;
+  color: g.$white;
+
+  &__ja-title {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    writing-mode: vertical-rl;
+    letter-spacing: 5px;
+    font-weight: bold;
+
+    @include g.mq(md) {
+      top: 20%;
+    }
+  }
+
+  &__ja-title-sub {
+    font-size: 36px;
+    border-right: 2px solid g.$white;
+    padding: 5px;
+    width: 100%;
+    margin-left: 10px;
+
+    @include g.mq(md) {
+      font-size: 28px;
+    }
+  }
+
+  &__ja-title-main {
+    padding: 5px;
+    font-size: 48px;
+    position: absolute;
+    top: 60%;
+    height: fit-content;
+    border-right: 2px solid g.$white;
+
+    @include g.mq(md) {
+      font-size: 32px;
+    }
+  }
+
+  &__en-title {
+    position: absolute;
+    font-size: 32px;
+    top: 60%;
+    left: 10%;
+    line-height: 1.5em;
+    letter-spacing: 5px;
+    text-align: center;
+
+    @include g.mq(md) {
+      top: 70%;
+      font-size: 24px;
+      letter-spacing: 3px;
+    }
+  }
+}

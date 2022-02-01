@@ -1,0 +1,70 @@
+@use "../global/index" as g;
+
+.contact-btn {
+  display: block;
+  margin-top: 40px;
+  @include g.transition();
+  opacity: 0;
+  visibility: hidden;
+  text-align: center;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__web,
+  &__tel {
+    display: block;
+    width: calc(375px - 30px * 2);
+    height: 90px;
+    border: 1px solid g.$black;
+    margin: 20px auto;
+    @include g.transition();
+
+    &:hover {
+      background-color: g.$black;
+      color: g.$l-gray;
+
+      & span::before,
+      span::after {
+        background-color: g.$l-gray;
+        right: -40px;
+      }
+    }
+  }
+
+  &__web span {
+    position: relative;
+    top: -1rem;
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 1px;
+      border-radius: 1px;
+      background-color: g.$black;
+      position: absolute;
+      bottom: -1rem;
+      right: 0;
+      @include g.transition();
+    }
+
+    &::after {
+      content: "";
+      width: 20%;
+      height: 1.2px;
+      border-radius: 1px;
+      background-color: g.$black;
+      position: absolute;
+      bottom: -1rem;
+      right: 0;
+      transform: translateY(0.55rem) rotate(-30deg);
+      @include g.transition();
+    }
+  }
+
+  &__tel span {
+    line-height: 1.5rem;
+  }
+}

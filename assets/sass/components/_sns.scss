@@ -1,0 +1,23 @@
+@use "../global/index" as g;
+
+.sns {
+  &__list {
+    margin: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 50px;
+
+    @include g.mq(md) {
+      opacity: 0;
+      visibility: hidden;
+      margin: 50px auto;
+      width: 200px;
+      @include g.transition();
+
+      &.active {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
