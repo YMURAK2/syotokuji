@@ -1,0 +1,112 @@
+@use "../global/index" as g;
+
+.section {
+  padding: 40px 0 80px;
+  overflow: hidden;
+
+  &__title {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 80px;
+  }
+
+  &__title-main {
+    padding-top: 120px;
+    margin: 0 auto;
+    writing-mode: vertical-rl;
+    height: max-content;
+    font-size: 24px;
+    font-weight: bold;
+
+    &::before {
+      content: "";
+      width: 1px;
+      height: 80px;
+      background-color: g.$gray;
+      position: absolute;
+      left: 50%;
+      top: 20px;
+    }
+  }
+
+  &__title-sub {
+    position: absolute;
+    top: 50%;
+    font-size: 48px;
+    color: g.$gray;
+    text-shadow: 2px 2px 5px g.$gray;
+
+    &.reverse {
+      right: 0;
+    }
+
+    @include g.mq(md) {
+      display: none;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &.reverse {
+      flex-direction: row-reverse;
+    }
+
+    @include g.mq(md) {
+      display: block;
+    }
+  }
+
+  &__figure {
+    position: relative;
+    width: 45%;
+
+    @include g.mq(md) {
+      width: 100%;
+    }
+  }
+
+  &__comment {
+    position: absolute;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    top: -50px;
+    left: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+    font-size: 24px;
+    padding: 10px;
+    font-family: g.$sec-font;
+
+    &.reverse {
+      right: 30px;
+      left: auto;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    object-fit: cover;
+    height: 450px;
+    box-shadow: 20px 20px g.$gray;
+
+    @include g.mq(md) {
+      box-shadow: 10px 10px g.$gray;
+    }
+  }
+
+  &__content {
+    width: 45%;
+
+    @include g.mq(md) {
+      margin-top: 30px;
+      width: 100%;
+    }
+  }
+
+  &__text {
+    margin: 10px auto 40px;
+  }
+}

@@ -59,12 +59,31 @@
       position: absolute;
       bottom: -1rem;
       right: 0;
-      transform: translateY(0.55rem) rotate(-30deg);
+      transform-origin: right;
+      transform: rotate(-30deg);
       @include g.transition();
     }
   }
 
   &__tel span {
     line-height: 1.5rem;
+  }
+}
+
+.more-btn {
+  display: block;
+  position: relative;
+  width: calc(375px - 30px * 2);
+  border: 1px solid g.$black;
+  background-color: g.$black;
+  color: g.$white;
+  padding: 15px 0;
+  text-align: center;
+  margin: 0 auto;
+  @include g.transition();
+
+  &:hover {
+    background-color: g.$white;
+    color: g.$black;
   }
 }

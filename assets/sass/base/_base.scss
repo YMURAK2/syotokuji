@@ -3,6 +3,7 @@
 body {
   font-family: g.$main-font;
   color: g.$black;
+  
 }
 
 a {
@@ -21,10 +22,11 @@ main {
 }
 
 .container {
+  padding: 0 30px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.wrapper {
-  margin: 0 30px;
+.background {
+  background-color: g.$l-gray;
 }

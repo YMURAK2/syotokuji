@@ -56,7 +56,7 @@
         $page_id = get_page_by_path("contact");
         $page_id = $page_id->ID;
       ?>
-      <a href="<?php echo get_page_link($page_id);?>"><button
+      <a href="<?php echo esc_url(get_permalink($page_id));?>"><button
           class="contact-btn__web"><span>WEBでのお問い合わせ</span></button></a>
       <a href="tel:000-1234-5678"><button class="contact-btn__tel"><span>お電話でのお問い合わせ<br>03-1234-5678</span></button></a>
     </div>
@@ -76,24 +76,86 @@
     </section>
 
     <section class="news-list">
-      <div class="wrapper">
+      <div class="container">
         <?php if (have_posts()):?>
         <ul class="news-list__list">
           <?php while (have_posts()):the_post(); ?>
           <li class="news-list__item">
-            <time class="news-list__date"
-              datetime="<?php the_time('y-m-d')?>"><?php the_time('Y年m月d日') ?></time>
-            <div class="news-list__category"><?php the_category() ?>
+            <div class="news-list__heading">
+              <time class="news-list__date"
+                datetime="<?php the_time('y-m-d')?>"><?php the_time('Y年m月d日') ?></time>
+              <div class="news-list__category"><?php the_category() ?>
+              </div>
             </div>
-            <div class="news-list__title"><?php the_title() ?>
-            </div>
+            <div class="news-list__title"><a
+                href="<?php the_permalink() ?>"><?php the_title() ?>
+            </div></a>
           </li>
           <?php endwhile;?>
           <?php endif; ?>
         </ul>
+        <a href=""><button class="more-btn"><span>もっと見る</span></button></a>
       </div>
     </section>
 
+
+    <section class="section background">
+      <?php
+          $slug = "about";
+          $page_id = get_page_by_path($slug);
+          $page_id = $page_id->ID;
+      ?>
+      <div class="container">
+        <h2 class="section__title">
+          <p class="section__title-main"><?php echo esc_html(get_the_title($page_id)) ?>
+          </p>
+          <p class="section__title-sub"><?php echo esc_html(strtoupper($slug)) ?>
+          </p>
+        </h2>
+        <div class="section__wrapper">
+          <figure class="section__figure">
+            <p class="section__comment">建立100年の歴史</p>
+
+            <?php echo get_the_post_thumbnail($page_id, 'large', array("alt" => "$slug", "class" => "section__img")); ?>
+          </figure>
+          <div class="section__content">
+            <p class="section__text">
+              テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+            </p>
+            <button class="more-btn">もっと見る</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <?php
+          $slug = "greeting";
+          $page_id = get_page_by_path($slug);
+          $page_id = $page_id->ID;
+      ?>
+      <div class="container">
+        <h2 class="section__title">
+          <p class="section__title-main"><?php echo esc_html(get_the_title($page_id)) ?>
+          </p>
+          <p class="section__title-sub reverse"><?php echo esc_html(strtoupper($slug)) ?>
+          </p>
+        </h2>
+        <div class="section__wrapper reverse">
+          <figure class="section__figure">
+            <p class="section__comment reverse">まごころを大切にします</p>
+
+            <?php echo get_the_post_thumbnail($page_id, 'large', array("alt" => "$slug", "class" => "section__img")); ?>
+          </figure>
+          <div class="section__content">
+            <p class="section__text">
+              テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+            </p>
+            <button class="more-btn">もっと見る</button>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <?php wp_footer() ?>

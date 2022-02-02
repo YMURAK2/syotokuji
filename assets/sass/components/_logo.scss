@@ -1,7 +1,7 @@
 @use "../global/index" as g;
 
-.logo-wrapper{
-  display:block;
+.logo-wrapper {
+  display: block;
   margin: 40px auto;
   width: fit-content;
 
@@ -9,7 +9,7 @@
     flex-direction: row;
     height: 80px;
     margin: 0;
-    display:flex;
+    display: flex;
     align-items: center;
   }
 }
@@ -20,7 +20,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-family: g.$sub-font;
+  font-family: g.$sec-font;
 
   @include g.mq(md) {
     flex-direction: row;
@@ -41,20 +41,18 @@
 
   &__title-sub {
     margin-bottom: 5px;
-    font-size: 20px;
+    font-size: 16px;
 
     @include g.mq(md) {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 
   &__title-main {
-    font-size: 30px;
+    font-size: 24px;
 
     @include g.mq(md) {
-      font-size: 20px;
+      font-size: 16px;
     }
   }
 }
-
-

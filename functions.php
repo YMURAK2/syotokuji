@@ -11,7 +11,7 @@ function add_files()
     //fontawesome
     wp_enqueue_script('font_awesome', 'https://kit.fontawesome.com/12e7f54fbf.js');
     //main js
-    wp_enqueue_script('main_js', get_template_directory_uri() . '/assets/js/script.js',array(),false,true);
+    wp_enqueue_script('main_js', get_template_directory_uri() . '/assets/js/script.js', array(), false, true);
 }
 add_action('wp_enqueue_scripts', 'add_files');
 
@@ -20,3 +20,17 @@ add_theme_support('title-tag');
 
 //カスタムメニュー機能を使用可能にする
 add_theme_support('menus');
+
+//アイキャッチ画像を使用可能にする
+add_theme_support('post-thumbnails');
+
+//投稿アーカイブページの作成
+function post_has_archive($args, $post_type)
+{
+    if ('post' == $post_type) {
+        $args['rewrite'] = true;
+        $args['has_archive'] = 'category';
+    }
+    return $args;
+}
+add_filter('register_post_type_args', 'post_has_archive', 10, 2);
