@@ -1,0 +1,40 @@
+@use "../global/index" as g;
+
+.swiper {
+  padding-bottom: 40px;
+  &-slide {
+    overflow: hidden;
+    width: 100%;
+    height: 22vw;
+
+    @include g.mq(md) {
+      height: 300px;
+    }
+
+    & a {
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    & img {
+      width: 100%;
+      height: 22vw;
+      object-fit: cover;
+      @include g.transition();
+
+      &:hover {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+
+      @include g.mq(md) {
+        height: 300px;
+      }
+    }
+  }
+
+  &-pagination-bullet-active {
+    background-color: g.$black;
+  }
+}

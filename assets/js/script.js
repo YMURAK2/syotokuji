@@ -9,7 +9,6 @@ const gnav = document.querySelector(".gnav");
 const sns = document.querySelector(".sns__list");
 const contactBtn = document.querySelector(".contact-btn");
 
-console.log(menuText);
 menuBtn.addEventListener("click", () => {
   header.classList.toggle("active");
   menuLine.classList.toggle("active");
@@ -18,6 +17,7 @@ menuBtn.addEventListener("click", () => {
   sns.classList.toggle("active");
   contactBtn.classList.toggle("active");
 });
+
 
 // // ヘッダーのスクロール後の変化
 // const header = document.querySelector(".header");
@@ -57,19 +57,36 @@ menuBtn.addEventListener("click", () => {
 //   }
 // });
 
-// //swipper
-// let mySwiper = new Swiper(".swiper", {
-//   autoplay: {
-//     delay: 2000,
-//   },
-//   loop: true,
-//   pagination: {
-//     el: ".swiper-pagination",
-//     type: "bullets",
-//     clickable: true,
-//   },
-//   navigation: {
-//     nextEl: ".swiper-button-next",
-//     prevEl: ".swiper-button-prev",
-//   },
-// });
+//swipper
+const theWrapper = document.querySelector(".swiper-wrapper");
+let mySwiper = new Swiper(".swiper", {
+  slidesPerView: 1,
+  breakpoints: {
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 10,
+    },
+  },
+  // freeMode: true,
+  // speed: 5000,
+  autoplay: {
+    delay: 3000,
+  },
+  loop: true,
+  //自動再生（連続）のために必要な関数
+  // on: {
+  //   slideChangeTransitionStart: function () {
+  //     theWrapper.style.transitionTimingFunction = "linear";
+  //   },
+  // },
+  autoHeight: true,
+  pagination: {
+    el: ".swiper-pagination",
+    type: "bullets",
+    clickable: true,
+  },
+  // navigation: {
+  //   nextEl: ".swiper-button-next",
+  //   prevEl: ".swiper-button-prev",
+  // },
+});

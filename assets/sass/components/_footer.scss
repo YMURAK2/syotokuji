@@ -1,0 +1,29 @@
+@use "../global/index" as g;
+
+.footer {
+  margin-top: 40px;
+  background-color: g.$black;
+  padding-left: 200px;
+  color: g.$white;
+
+  @include g.mq(md) {
+    padding: 0;
+  }
+
+  &__container {
+    max-width: 1200px;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    @include g.mq(md) {
+      flex-direction: column;
+    }
+  }
+
+  &__copyright {
+    text-align: center;
+    padding-bottom: 10px;
+  }
+}

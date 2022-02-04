@@ -8,9 +8,19 @@
   visibility: hidden;
   text-align: center;
 
-  &.active {
+  @include g.mq(md) {
+    &__link.active:hover {
+      opacity: 1;
+    }
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__link--footer:hover {
     opacity: 1;
-    visibility: visible;
   }
 
   &__web,
@@ -29,7 +39,30 @@
       & span::before,
       span::after {
         background-color: g.$l-gray;
-        right: -40px;
+        right: -20%;
+      }
+    }
+
+    &--footer {
+      text-align: center;
+      border: 1px solid g.$white;
+
+      @include g.mq(lg) {
+        width: 200px;
+      }
+
+      @include g.mq(md) {
+        width: calc(375px - 30px * 2);
+      }
+
+      &:hover {
+        background-color: g.$white;
+        color: g.$black;
+
+        & span::before,
+        span::after {
+          background-color: g.$black;
+        }
       }
     }
   }
@@ -62,6 +95,13 @@
       transform-origin: right;
       transform: rotate(-30deg);
       @include g.transition();
+    }
+  }
+
+  &__web--footer span {
+    &::before,
+    &::after {
+      background-color: g.$white;
     }
   }
 

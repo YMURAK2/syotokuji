@@ -15,16 +15,16 @@
   <?php wp_body_open() ?>
   <header class="header">
     <h1>
-      <a class="logo-wrapper"
+      <a class="header__logo-wrapper"
         href="<?php echo esc_url(home_url()) ?>">
-        <div class="logo">
-          <img class="logo__img"
+        <div class="header__logo">
+          <img class="header__logo-img"
             src="<?php echo get_template_directory_uri()?>/assets/img/header-logo.png"
             alt="header-icon">
-          <div class="logo__title">
-            <p class="logo__title-sub"><?php bloginfo('description')?>
+          <div class="header__logo-title">
+            <p class="header__logo-title-sub"><?php bloginfo('description')?>
             </p>
-            <p class="logo__title-main"><?php bloginfo('name')?>
+            <p class="leader__logo-title-main"><?php bloginfo('name')?>
             </p>
           </div>
         </div>
@@ -56,9 +56,9 @@
         $page_id = get_page_by_path("contact");
         $page_id = $page_id->ID;
       ?>
-      <a href="<?php echo esc_url(get_permalink($page_id));?>"><button
+      <a class="contact-btn__link" href="<?php echo esc_url(get_permalink($page_id));?>"><button
           class="contact-btn__web"><span>WEBでのお問い合わせ</span></button></a>
-      <a href="tel:000-1234-5678"><button class="contact-btn__tel"><span>お電話でのお問い合わせ<br>03-1234-5678</span></button></a>
+      <a  class="contact-btn__link"  href="tel:000-1234-5678"><button class="contact-btn__tel"><span>お電話でのお問い合わせ<br>03-1234-5678</span></button></a>
     </div>
   </header>
   <main>
@@ -102,8 +102,10 @@
     <section class="section background">
       <?php
           $slug = "about";
-          $page_id = get_page_by_path($slug);
-          $page_id = $page_id->ID;
+          if (get_page_by_path($slug)) {
+              $page_id = get_page_by_path($slug);
+              $page_id = $page_id->ID;
+          };
       ?>
       <div class="container">
         <h2 class="section__title">
@@ -115,7 +117,6 @@
         <div class="section__wrapper">
           <figure class="section__figure">
             <p class="section__comment">建立100年の歴史</p>
-
             <?php echo get_the_post_thumbnail($page_id, 'large', array("alt" => "$slug", "class" => "section__img")); ?>
           </figure>
           <div class="section__content">
@@ -131,8 +132,10 @@
     <section class="section">
       <?php
           $slug = "greeting";
-          $page_id = get_page_by_path($slug);
-          $page_id = $page_id->ID;
+          if (get_page_by_path($slug)) {
+              $page_id = get_page_by_path($slug);
+              $page_id = $page_id->ID;
+          };
       ?>
       <div class="container">
         <h2 class="section__title">
@@ -156,8 +159,124 @@
         </div>
       </div>
     </section>
-  </main>
 
+    <section class="section">
+      <?php
+          $slug = "gallery";
+          if (get_page_by_path($slug)) {
+              $page_id = get_page_by_path($slug);
+              $page_id = $page_id->ID;
+          };
+      ?>
+      <div class="container">
+        <h2 class="section__title">
+          <p class="section__title-main">写真集</p>
+          <p class="section__title-sub"><?php echo esc_html(strtoupper($slug)) ?>
+          </p>
+        </h2>
+      </div>
+      <?php
+                $args = array(
+                  'post_type' => 'asset',
+                  'posts_per_page' => 10
+                );
+                $the_query = new WP_Query($args);
+          ?>
+      <?php if ($the_query->have_posts()): ?>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <?php while ($the_query->have_posts()):$the_query->the_post()?>
+          <div class="swiper-slide">
+            <a href="<?php the_permalink() ?>">
+              <?php the_post_thumbnail('large', array('alt'=>get_post_field('post_name', get_the_ID()))) ?>
+            </a>
+          </div>
+          <?php endwhile; ?>
+          <?php wp_reset_postdata() ?>
+        </div>
+        <div class="swiper-pagination"></div>
+        <!-- <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div> -->
+      </div>
+      <?php endif; ?>
+    </section>
+
+    <section class="section">
+      <?php
+          $slug = "access";
+          if (get_page_by_path($slug)) {
+              $page_id = get_page_by_path($slug);
+              $page_id = $page_id->ID;
+          };
+      ?>
+      <div class="container">
+        <h2 class="section__title">
+          <p class="section__title-main"><?php echo esc_html(get_the_title($page_id)) ?>
+          </p>
+          <p class="section__title-sub reverse"><?php echo esc_html(strtoupper($slug)) ?>
+          </p>
+        </h2>
+        <div class="section__wrapper">
+          <figure class="section__figure">
+            <iframe class="section__map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.828030380883!2d139.76493611511148!3d35.68123618019423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1643973299347!5m2!1sja!2sjp"
+              style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </figure>
+          <div class="section__content">
+            <div class="section__access-item">
+              <p class="section__address">〒012-3456</p>
+              <p class="section__address">神奈川県横浜市西区浄土真宗町1-2-3</p>
+            </div>
+            <div class="section__access-item">
+              <p class="section__station">最寄り駅：聖徳線　真宗駅</p>
+              <p class="section__station">最寄りバス停：聖徳線　真宗停留所</p>
+            </div>
+            <div class="section__access-item">
+              <?php
+              $page_id = get_page_by_path("access");
+              $page_id = $page_id->ID;
+            ?>
+              <a class="section__access-nav"
+                href="<?php echo esc_url(get_permalink($page_id)."#car") ?>">お車でお越しの方</a>
+              <a class="section__access-nav"
+                href="<?php echo esc_url(get_permalink($page_id)."#train") ?>">電車でお越しの方</a>
+              <a class="section__access-nav"
+                href="<?php echo esc_url(get_permalink($page_id)."#bus") ?>">バスでお越しの方</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer__container">
+      <a class="footer__logo-wrapper"
+        href="<?php echo esc_url(home_url()) ?>">
+        <div class="footer__logo">
+          <img class="footer__logo-img"
+            src="<?php echo get_template_directory_uri()?>/assets/img/footer-logo.png"
+            alt="footer-icon">
+          <div class="footer__logo-title">
+            <p class="footer__logo-title-sub"><?php bloginfo('description')?>
+            </p>
+            <p class="footer__logo-title-main"><?php bloginfo('name')?>
+            </p>
+          </div>
+        </div>
+      </a>
+      <?php
+        $page_id = get_page_by_path("contact");
+        $page_id = $page_id->ID;
+      ?>
+      <a class="contact-btn__link contact-btn__link--footer" href="<?php echo esc_url(get_permalink($page_id));?>"><button
+          class="contact-btn__web contact-btn__web--footer"><span>WEBでのお問い合わせ</span></button></a>
+      <a class="contact-btn__link contact-btn__link--footer" href="tel:000-1234-5678"><button
+          class="contact-btn__tel contact-btn__tel--footer"><span>お電話でのお問い合わせ<br>03-1234-5678</span></button></a>
+    </div>
+    <div class="footer__copyright">
+      <small>&copy; 2022 聖徳寺 All rights reserved.</small>
+    </div>
+  </footer>
   <?php wp_footer() ?>
 </body>
 

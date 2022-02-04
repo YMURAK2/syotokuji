@@ -1,32 +1,34 @@
 @use "../global/index" as g;
 
-.logo-wrapper {
-  display: block;
-  margin: 40px auto;
-  width: fit-content;
+.header {
+  &__logo-wrapper {
+    display: block;
+    margin: 40px auto;
+    width: fit-content;
 
-  @include g.mq(md) {
-    flex-direction: row;
-    height: 80px;
-    margin: 0;
+    @include g.mq(md) {
+      flex-direction: row;
+      height: 80px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__logo {
     display: flex;
+    flex-direction: column;
     align-items: center;
-  }
-}
+    justify-content: center;
+    text-align: center;
+    font-family: g.$sec-font;
 
-.logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-family: g.$sec-font;
-
-  @include g.mq(md) {
-    flex-direction: row;
+    @include g.mq(md) {
+      flex-direction: row;
+    }
   }
 
-  &__img {
+  &__logo-img {
     display: block;
     width: 60px;
     height: 60px;
@@ -39,7 +41,7 @@
     }
   }
 
-  &__title-sub {
+  &__logo-title-sub {
     margin-bottom: 5px;
     font-size: 16px;
 
@@ -48,11 +50,44 @@
     }
   }
 
-  &__title-main {
+  &__logo-title-main {
     font-size: 24px;
 
     @include g.mq(md) {
       font-size: 16px;
     }
+  }
+}
+
+.footer {
+  &__logo-wrapper {
+    display: block;
+    width: fit-content;
+    margin-bottom: 30px;
+  }
+
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: g.$sec-font;
+  }
+
+  &__logo-img {
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+  }
+
+  &__logo-title-sub {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  &__logo-title-main {
+    font-size: 24px;
   }
 }
