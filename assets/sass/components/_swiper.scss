@@ -1,8 +1,8 @@
 @use "../global/index" as g;
 
-.swiper {
+.swiper__gallery {
   padding-bottom: 40px;
-  &-slide {
+  & .swiper-slide {
     overflow: hidden;
     width: 100%;
     height: 22vw;
@@ -34,7 +34,19 @@
     }
   }
 
-  &-pagination-bullet-active {
+  & .swiper-pagination-bullet-active {
+    background-color: g.$black;
+  }
+}
+
+.swiper__hero {
+  height: 100%;
+  & .swiper-slide {
+    width: 100%;
+    height: 100%;
+  }
+
+  & .swiper-pagination-bullet-active {
     background-color: g.$black;
   }
 }

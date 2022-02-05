@@ -6,6 +6,12 @@
   background-color: g.$l-gray;
   width: 200px;
   height: 100vh;
+  transform: translateX(-200px);
+  @include g.transition($delay: 1s, $duration: 1s);
+
+  &.header-fadein {
+    transform: translateX(0);
+  }
 
   &__menu-btn {
     display: none;
@@ -14,7 +20,12 @@
   @include g.mq(md) {
     width: 100%;
     height: 80px;
-    @include g.transition();
+    transform: translateY(-80px);
+    transition: transform 1s 1s, height 1s;
+
+    &.header-fadein {
+      transform: translateX(0);
+    }
 
     &.active {
       position: fixed;

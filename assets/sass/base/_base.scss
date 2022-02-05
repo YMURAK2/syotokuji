@@ -13,10 +13,15 @@ a {
 }
 
 main {
-  margin: 0 0 0 200px;
-  @include g.mq(md) {
-    margin: 0;
-    padding-top: 80px;
+  @include g.transition($delay: 1s, $duration: 1s);
+
+  &.header-fadein {
+    margin: 0 0 0 200px;
+
+    @include g.mq(md) {
+      margin: 0;
+      padding-top: 80px;
+    }
   }
 }
 
@@ -28,4 +33,49 @@ main {
 
 .background {
   background-color: g.$l-gray;
+}
+
+.fade-in-img {
+  opacity: 0;
+  transform: translateY(-10%);
+  @include g.transition($duration: 2s);
+
+  &.appear {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-text-r {
+  overflow: hidden;
+  transform: translate(-100%, 0);
+  @include g.transition($duration: 2s);
+
+  & span {
+    display: block;
+    transform: translate(100%, 0);
+    @include g.transition($duration: 2s);
+  }
+
+  &.appear,
+  &.appear span {
+    transform: translate(0, 0);
+  }
+}
+
+.fade-in-text-t {
+  overflow: hidden;
+  transform: translate(0, -100%);
+  @include g.transition($duration: 2s);
+
+  & span {
+    display: block;
+    transform: translate(0, 100%);
+    @include g.transition($duration: 2s);
+  }
+
+  &.appear,
+  &.appear span {
+    transform: translate(0, 0);
+  }
 }

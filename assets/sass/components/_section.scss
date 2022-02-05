@@ -93,6 +93,7 @@
     box-shadow: 20px 20px g.$gray;
 
     @include g.mq(md) {
+      max-height: 300px;
       box-shadow: 10px 10px g.$gray;
     }
   }
