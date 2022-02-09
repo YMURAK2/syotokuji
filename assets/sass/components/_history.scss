@@ -1,0 +1,74 @@
+@use "../global/index" as g;
+
+.history {
+  display: grid;
+  margin: 0 auto;
+  max-width: 1000px;
+  grid-template-columns:
+    minmax(80px, auto)
+    minmax(80px, auto)
+    minmax(300px, auto);
+  grid-template-rows: auto;
+
+  @include g.mq(md) {
+    display: block;
+
+    &__row {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: 80px 1fr;
+      grid-template-rows: auto auto auto;
+      margin-bottom: 10px;
+      border-top: 1px solid g.$gray;
+      border-bottom: 1px solid g.$gray;
+    }
+  }
+
+  &__head {
+    font-size: 20px;
+    font-family: g.$sec-font;
+    line-height: 60px;
+    background-color: g.$l-gray;
+    border-bottom: 1px solid g.$gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include g.mq(md) {
+      font-size: 16px;
+      border-bottom: 1px solid g.$l-gray;
+    }
+
+    &:nth-of-type(3n) {
+      @include g.mq(md) {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__data {
+    padding: 20px 0;
+    border-bottom: 1px solid g.$gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include g.mq(md) {
+      font-size: 14px;
+      text-align: left;
+      justify-content: start;
+      padding: 20px 10px;
+      border-bottom: 1px solid g.$l-gray;
+    }
+
+    &:nth-of-type(3n) {
+      padding: 20px 10px 20px 30px;
+      justify-content: start;
+
+      @include g.mq(md) {
+        padding: 20px 10px;
+        border-bottom: none;
+      }
+    }
+  }
+}

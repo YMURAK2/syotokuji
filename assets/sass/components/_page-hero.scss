@@ -1,0 +1,28 @@
+@use "../global/index" as g;
+
+.page-hero {
+  color: g.$black;
+  height: 300px;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+
+  &__title {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    height: max-content;
+    writing-mode: vertical-rl;
+    letter-spacing: 0.15em;
+    font-family: g.$sec-font;
+    font-size: 48px;
+    background-color: rgba(245, 245, 245, 0.6);
+    padding: 10px;
+
+    @include g.mq(md) {
+      top: 20%;
+      right: 10%;
+      font-size: 32px;
+    }
+  }
+}

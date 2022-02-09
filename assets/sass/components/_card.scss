@@ -1,0 +1,93 @@
+@use "../global/index" as g;
+
+.card {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: auto;
+    justify-content: center;
+    gap: 90px 20px;
+  }
+
+  &__item {
+    box-shadow: 2px 2px 5px g.$gray;
+  }
+
+  &__figure {
+    overflow: hidden;
+
+    & a {
+      display: block;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    @include g.transition();
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  // &__figure {
+  //   display: block;
+  //   position: relative;
+  //   width: 100%;
+
+  //   &:before {
+  //     content: "";
+  //     display: block;
+  //     padding-top: 100%;
+  //   }
+  // }
+  // &__img {
+  //   position: absolute;
+  //   width: 100%;
+  //   height: 100%;
+  //   top: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   left: 0;
+  //   object-fit: cover;
+  // }
+
+  &__content {
+    padding: 30px 20px 0;
+    background-color: g.$l-gray;
+  }
+
+  &__title {
+    display: inline-block;
+    font-size: 20px;
+    padding: 0 10px 0 60px;
+    position: relative;
+    margin-bottom: 15px;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 40px;
+      height: 1px;
+      background-color: g.$gray;
+    }
+
+    &:before {
+      left: 0;
+    }
+
+    &:after {
+      right: -40px;
+    }
+  }
+
+  &__desc {
+    line-height: 1.5em;
+    height: 260px;
+  }
+}

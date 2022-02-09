@@ -1,0 +1,26 @@
+@use "../global/index" as g;
+
+.breadcrumb {
+  height: 40px;
+  line-height: 40px;
+  background-color: g.$l-gray;
+  font-size: 14px;
+
+  @include g.mq(md) {
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+  }
+
+  &__wrapper {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0 10px;
+
+    & span {
+      display: inline-block;
+      margin: 0 10px;
+    }
+  }
+}

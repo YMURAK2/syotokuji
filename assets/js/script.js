@@ -81,6 +81,7 @@
         delay: 3000,
       },
       effect: "fade",
+
       loop: true,
       speed: 2000,
       autoHeight: true,
@@ -124,7 +125,6 @@
         if (!entry.isIntersecting) {
           return;
         }
-        console.log(entry.target);
         entry.target.classList.add("appear");
         obs.unobserve(entry.target);
       });
@@ -134,7 +134,7 @@
       const options = {
         root: null,
         threshold: 0,
-        margin: "-300px -300px",
+        margin: "-200px -200px",
       };
       const observer = new IntersectionObserver(callback, options);
       targets.forEach((target) => {
@@ -142,4 +142,58 @@
       });
     }
   }
+}
+
+// tableレスポンシブ
+{
+  const changeTable = () => {
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      const table = document.querySelector(".history");
+      const tableData = document.querySelectorAll(".history__data");
+      const tableHead = document.querySelectorAll(".history__head");
+
+      if (document.querySelectorAll(".history__row").length !== 0) {
+        return;
+      }
+
+      tableHead.forEach((e) => e.remove());
+
+      for (let i = 0; i < tableData.length / 3; i++) {
+        const data = document.querySelectorAll(".history__data");
+        const row = document.createElement("div");
+        row.classList.add("history__row");
+        const cells = [];
+        const cloneHead = [];
+
+        tableHead.forEach((e) => cloneHead.push(e.cloneNode(true)));
+
+        for (let j = 0; j < tableHead.length; j++) {
+          cells.push(cloneHead[j]);
+          row.appendChild(cells[j]);
+        }
+
+        for (let j = 0; j < tableHead.length * 2; j++) {
+          cells.push(data[j]);
+          row.appendChild(cells[j]);
+        }
+
+        table.appendChild(row);
+      }
+    } else if (window.matchMedia("(min-width:768px)").matches) {
+      const table = document.querySelector(".history");
+      const tableData = document.querySelectorAll(".history__data");
+      const tableHead = document.querySelectorAll(".history__head");
+      const row = document.querySelectorAll(".history__row");
+
+      for (let i = 0; i < 3; i++) {
+        table.appendChild(tableHead[i]);
+      }
+
+      tableData.forEach((e) => table.appendChild(e));
+      row.forEach((e) => e.remove());
+    }
+  };
+
+  window.addEventListener("load", changeTable);
+  window.addEventListener("resize", changeTable);
 }

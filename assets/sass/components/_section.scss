@@ -37,7 +37,7 @@
     color: g.$gray;
     text-shadow: 2px 2px 5px g.$gray;
 
-    &.reverse {
+    &--reverse {
       right: 0;
     }
 
@@ -51,8 +51,12 @@
     justify-content: space-between;
     align-items: center;
 
-    &.reverse {
+    &--reverse {
       flex-direction: row-reverse;
+    }
+
+    &--cover {
+      display: block;
     }
 
     @include g.mq(md) {
@@ -67,6 +71,15 @@
     @include g.mq(md) {
       width: 100%;
     }
+
+    &--cover {
+      width: 70%;
+      z-index: -1;
+
+      @include g.mq(md) {
+        width: 100%;
+      }
+    }
   }
 
   &__comment {
@@ -75,12 +88,12 @@
     text-orientation: upright;
     top: -50px;
     left: 30px;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(245, 245, 245, 0.8);
     font-size: 24px;
     padding: 10px;
     font-family: g.$sec-font;
 
-    &.reverse {
+    &--reverse {
       right: 30px;
       left: auto;
     }
@@ -90,11 +103,9 @@
     width: 100%;
     object-fit: cover;
     height: 450px;
-    box-shadow: 20px 20px g.$gray;
 
     @include g.mq(md) {
       max-height: 300px;
-      box-shadow: 10px 10px g.$gray;
     }
   }
 
@@ -110,10 +121,23 @@
       margin-top: 30px;
       width: 100%;
     }
+
+    &--cover {
+      width: 70%;
+      background-color: rgba(245, 245, 245, 0.8);
+      margin: -200px 0 0 auto;
+      padding: 15px 20px;
+
+      @include g.mq(md) {
+        margin: -100px 0 0 auto;
+        width: 90%;
+      }
+    }
   }
 
   &__text {
     margin: 10px auto 40px;
+    line-height: 1.8em;
   }
 
   &__access-item {

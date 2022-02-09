@@ -26,16 +26,16 @@
       <div class="swiper-pagination"></div>
 
     </div>
-    <div class="hero__ja-title">
+    <h2 class="hero__ja-title">
       <p class="hero__ja-title-sub"><?php bloginfo('description')?>
       </p>
       <p class="hero__ja-title-main"><?php bloginfo('name')?>
       </p>
-    </div>
-    <div class="hero__en-title">
+    </h2>
+    <h2 class="hero__en-title">
       <p class="hero__en-title-sub">JODO SHINSYU</p>
       <p class="hero__en-title-main">KAKUJI</p>
-    </div>
+    </h2>
   </section>
 
   <section class="news-list">
@@ -57,7 +57,9 @@
         <?php endwhile;?>
         <?php endif; ?>
       </ul>
-      <a href=""><button class="more-btn"><span>もっと見る</span></button></a>
+      <a
+        href="<?php echo esc_url(home_url("/category/")) ?>"><button
+          class="more-btn"><span>もっと見る</span></button></a>
     </div>
   </section>
 
@@ -71,12 +73,12 @@
           };
       ?>
     <div class="container">
-      <h2 class="section__title">
+      <h3 class="section__title">
         <p class="section__title-main fade-in-text-t"><span><?php echo esc_html(get_the_title($page_id)) ?></span>
         </p>
         <p class="section__title-sub fade-in-text-r"><span><?php echo esc_html(strtoupper($slug)) ?></span>
         </p>
-      </h2>
+      </h3>
       <div class="section__wrapper">
         <figure class="section__figure fade-in-img">
           <p class="section__comment">建立100年の歴史</p>
@@ -86,7 +88,8 @@
           <p class="section__text">
             テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
           </p>
-          <button class="more-btn">もっと見る</button>
+          <a href="<?php echo esc_url(get_permalink($page_id)) ?>"><button
+              class="more-btn"><span>もっと見る</span></button></a>
         </div>
       </div>
     </div>
@@ -101,15 +104,15 @@
           };
       ?>
     <div class="container">
-      <h2 class="section__title">
+      <h3 class="section__title">
         <p class="section__title-main fade-in-text-t"><span><?php echo esc_html(get_the_title($page_id)) ?></span>
         </p>
-        <p class="section__title-sub fade-in-text-r reverse"><span><?php echo esc_html(strtoupper($slug)) ?></span>
+        <p class="section__title-sub section__title-sub--reverse fade-in-text-r"><span><?php echo esc_html(strtoupper($slug)) ?></span>
         </p>
-      </h2>
-      <div class="section__wrapper reverse">
+      </h3>
+      <div class="section__wrapper section__wrapper--reverse">
         <figure class="section__figure fade-in-img">
-          <p class="section__comment reverse">まごころを大切にします</p>
+          <p class="section__comment section__comment--reverse">まごころを大切にします</p>
 
           <?php echo get_the_post_thumbnail($page_id, 'large', array("alt" => "$slug", "class" => "section__img")); ?>
         </figure>
@@ -117,7 +120,8 @@
           <p class="section__text">
             テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
           </p>
-          <button class="more-btn">もっと見る</button>
+          <a href="<?php echo esc_url(get_permalink($page_id)) ?>"><button
+              class="more-btn"><span>もっと見る</span></button></a>
         </div>
       </div>
     </div>
@@ -132,12 +136,12 @@
           };
       ?>
     <div class="container">
-      <h2 class="section__title">
+      <h3 class="section__title">
         <p class="section__title-main fade-in-text-t"><span>写真集</span>
         </p>
         <p class="section__title-sub fade-in-text-r"><span><?php echo esc_html(strtoupper($slug)) ?></span>
         </p>
-      </h2>
+      </h3>
     </div>
     <?php
           $args = array(
@@ -174,12 +178,12 @@
           };
       ?>
     <div class="container">
-      <h2 class="section__title">
+      <h3 class="section__title">
         <p class="section__title-main fade-in-text-t"><span><?php echo esc_html(get_the_title($page_id)) ?></span>
         </p>
-        <p class="section__title-sub fade-in-text-r reverse"><span><?php echo esc_html(strtoupper($slug)) ?></span>
+        <p class="section__title-sub section__title-sub--reverse fade-in-text-r"><span><?php echo esc_html(strtoupper($slug)) ?></span>
         </p>
-      </h2>
+      </h3>
       <div class="section__wrapper">
         <figure class="section__figure fade-in-img">
           <iframe class="section__map"
