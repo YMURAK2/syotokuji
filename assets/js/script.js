@@ -56,21 +56,21 @@
 //   });
 // }
 
-// // ボタンを押すとページトップに戻る
-// const topagetop = document.querySelector(".to-page-top");
-// topagetop.addEventListener("click", () => {
-//   window.scroll({ top: 0, behavior: "smooth" });
-// });
+// ボタンを押すとページトップに戻る
+const topagetop = document.querySelector(".page-top-btn");
+topagetop.addEventListener("click", () => {
+  window.scroll({ top: 0, behavior: "smooth" });
+});
 
-// window.addEventListener("scroll", () => {
-//   if (window.pageYOffset > 400) {
-//     topagetop.style.opacity = "1";
-//     topagetop.style.visibility = "visible";
-//   } else if (window.pageYOffset < 400) {
-//     topagetop.style.opacity = "0";
-//     topagetop.style.visibility = "hidden";
-//   }
-// });
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 400) {
+    topagetop.style.opacity = "1";
+    topagetop.style.visibility = "visible";
+  } else if (window.pageYOffset < 400) {
+    topagetop.style.opacity = "0";
+    topagetop.style.visibility = "hidden";
+  }
+});
 
 //swipper
 {
@@ -117,31 +117,61 @@
 
 //フェードイン
 {
-  const targetAll = [".fade-in-img", ".fade-in-text-r", ".fade-in-text-t"];
-  for (let i = 0; i < targetAll.length; i++) {
-    const targets = document.querySelectorAll(targetAll[i]);
-    const callback = (entries, obs) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-        entry.target.classList.add("appear");
-        obs.unobserve(entry.target);
-      });
-    };
-
-    {
-      const options = {
+  class ScrollObserver {
+    constructor(targets, func, options) {
+      this.targets = document.querySelectorAll(targets);
+      const defaultOptions = {
         root: null,
-        threshold: 0,
-        margin: "-200px -200px",
+        threshold: 0.2,
+        margin: "0px",
+        once: true, //オリジナル（アニメーションを繰り返すかどうか）
       };
-      const observer = new IntersectionObserver(callback, options);
-      targets.forEach((target) => {
+      this.func = func;
+      this.options = Object.assign(defaultOptions, options);
+      this.once = this.options.once;
+      this.init();
+    }
+
+    init() {
+      const callback = (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            this.func(entry.target, false);
+            return;
+          }
+          this.func(entry.target, true);
+          if (this.once) {
+            obs.unobserve(entry.target);
+          }
+        });
+      };
+      const observer = new IntersectionObserver(
+        callback.bind(this),
+        this.options
+      );
+      this.targets.forEach((target) => {
         observer.observe(target);
       });
     }
   }
+
+  const func = (target, isIntersecting) => {
+    if (isIntersecting) {
+      target.classList.add("appear");
+    } else {
+      target.classList.remove("appear");
+    }
+  };
+
+  const fadeInImg = new ScrollObserver(".fadein-normal", func);
+  const fadeInTextR = new ScrollObserver(".fadein-textR", func, {
+    threshold: 0.2,
+    margin: "-200px -200px",
+  });
+  const fadeInTextT = new ScrollObserver(".fadein-textT", func, {
+    threshold: 0,
+    margin: "-200px -200px",
+  });
 }
 
 // tableレスポンシブ
@@ -194,6 +224,8 @@
     }
   };
 
-  window.addEventListener("load", changeTable);
-  window.addEventListener("resize", changeTable);
+  if (document.querySelector(".history")) {
+    window.addEventListener("load", changeTable);
+    window.addEventListener("resize", changeTable);
+  }
 }

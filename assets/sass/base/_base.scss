@@ -35,7 +35,7 @@ main {
   background-color: g.$l-gray;
 }
 
-.fade-in-img {
+.fadein-normal {
   opacity: 0;
   transform: translateY(-10%);
   @include g.transition($duration: 2s);
@@ -46,7 +46,7 @@ main {
   }
 }
 
-.fade-in-text-r {
+.fadein-textR {
   overflow: hidden;
   transform: translate(-100%, 0);
   @include g.transition($duration: 2s);
@@ -63,7 +63,7 @@ main {
   }
 }
 
-.fade-in-text-t {
+.fadein-textT {
   overflow: hidden;
   transform: translate(0, -100%);
   @include g.transition($duration: 2s);
@@ -79,3 +79,4 @@ main {
     transform: translate(0, 0);
   }
 }
+

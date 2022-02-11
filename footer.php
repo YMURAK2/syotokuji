@@ -1,3 +1,5 @@
+<div class="page-top-btn">PAGE TOP</div>
+</main>
 <footer class="footer">
   <div class="footer__container">
     <a class="footer__logo-wrapper"

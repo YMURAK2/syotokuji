@@ -131,3 +131,48 @@
     color: g.$black;
   }
 }
+
+.page-top-btn {
+  font-size: 14px;
+  position: relative;
+  writing-mode: vertical-rl;
+  color: g.$gray;
+  position: fixed;
+  bottom: 100px;
+  right: 5vw;
+  z-index: 30;
+  opacity: 0;
+  cursor: pointer;
+  @include g.transition();
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: -5px;
+    width: 2px;
+    height: 100px;
+    border-radius: 2px;
+    background-color: g.$gray;
+    @include g.animation(
+      $name: page-top,
+      $duration: 2s,
+      $iteration-count: infinite,
+      $direction: reverse,
+      $timing-function: cubic-bezier(1, 0, 0, 1)
+    );
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: -5px;
+    transform: rotate(-30deg);
+    transform-origin: top;
+    width: 2.4px;
+    border-radius: 2px;
+    height: 20px;
+    background-color: g.$gray;
+  }
+}

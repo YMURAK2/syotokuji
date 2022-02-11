@@ -16,7 +16,8 @@
     letter-spacing: 0.15em;
     font-family: g.$sec-font;
     font-size: 48px;
-    background-color: rgba(245, 245, 245, 0.6);
+    // background-color: rgba(245, 245, 245, 0.6);
+    background-color: g.$l-gray;
     padding: 10px;
 
     @include g.mq(md) {

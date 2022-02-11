@@ -1,0 +1,80 @@
+@use "../global/index" as g;
+
+.greeting {
+  display: grid;
+  max-width: 1000px;
+  margin: 0 auto;
+  grid-template-columns: 6fr 4fr;
+  grid-template-rows: 350px auto;
+  position: relative;
+
+  @include g.mq(md) {
+    display: block;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include g.mq(md) {
+      height: 300px;
+    }
+  }
+
+  &__namebox {
+    writing-mode: vertical-rl;
+    font-family: g.$sec-font;
+    font-size: 24px;
+    border: 1px solid g.$gray;
+    padding: 30px 20px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+    @include g.mq(md) {
+      font-size: 14px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      max-height: 200px;
+    }
+  }
+
+  &__post {
+    margin-top: 20px;
+
+    @include g.mq(md) {
+      margin-top: 0;
+    }
+  }
+
+  &__name {
+    font-family: g.$sub-font;
+    font-size: 48px;
+    margin: 40px 20px 0 0;
+
+    @include g.mq(md) {
+      font-size: 24px;
+      margin: 10px 10px 0 0;
+    }
+  }
+
+  &__comment {
+    margin-right: 60px;
+    line-height: 1.5em;
+
+    @include g.mq(md) {
+      margin-right: 20px;
+    }
+  }
+
+  &__message {
+    grid-column: 1 / 3;
+    background-color: g.$l-gray;
+    padding: 40px 40px;
+    margin-bottom: 80px;
+  }
+}
