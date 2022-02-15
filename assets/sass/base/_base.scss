@@ -5,13 +5,6 @@ body {
   color: g.$black;
 }
 
-a {
-  @include g.transition();
-  &:hover {
-    opacity: 0.8;
-  }
-}
-
 main {
   @include g.transition($delay: 1s, $duration: 1s);
 
@@ -25,10 +18,33 @@ main {
   }
 }
 
+.hover-opacity {
+  @include g.transition($duration: 0.3s);
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
 .container {
   padding: 0 30px;
   max-width: 1200px;
   margin: 0 auto;
+
+  @include g.mq(md) {
+    padding: 0 10px;
+  }
+
+}
+
+.is-sidebar-wrapper {
+  margin-top: -80px;
+  display: grid;
+  grid-template-columns: 1fr 250px;
+  gap: 30px;
+
+  @include g.mq(lg) {
+    display: block;
+  }
 }
 
 .background {
@@ -79,4 +95,3 @@ main {
     transform: translate(0, 0);
   }
 }
-

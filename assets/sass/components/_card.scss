@@ -62,7 +62,8 @@
 
   &__title {
     display: inline-block;
-    font-size: 20px;
+    font-weight: bold;
+    font-size: 18px;
     padding: 0 10px 0 60px;
     position: relative;
     margin-bottom: 15px;
@@ -88,6 +89,6 @@
 
   &__desc {
     line-height: 1.5em;
-    height: 260px;
+    height: 240px;
   }
 }

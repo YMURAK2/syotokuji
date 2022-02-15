@@ -5,7 +5,9 @@
   window.onload = function () {
     //ローディング画面を削除
     const spinner = document.querySelector(".loading");
-    spinner.classList.add("loaded");
+    if (spinner) {
+      spinner.classList.add("loaded");
+    }
     //ヘッダーのアニメーション
     const header = document.querySelector(".header");
     const main = document.querySelector("main");
@@ -21,7 +23,7 @@
   const menuLine = document.querySelector(".header__menu-line");
   const menuText = document.querySelector(".header__menu-text");
   const gnav = document.querySelector(".gnav");
-  const sns = document.querySelector(".sns__list");
+  const sns = document.querySelector(".sns");
   const contactBtn = document.querySelector(".contact-btn");
 
   menuBtn.addEventListener("click", () => {
@@ -155,7 +157,7 @@ window.addEventListener("scroll", () => {
     }
   }
 
-  const func = (target, isIntersecting) => {
+  const fadein = (target, isIntersecting) => {
     if (isIntersecting) {
       target.classList.add("appear");
     } else {
@@ -163,14 +165,27 @@ window.addEventListener("scroll", () => {
     }
   };
 
-  const fadeInImg = new ScrollObserver(".fadein-normal", func);
-  const fadeInTextR = new ScrollObserver(".fadein-textR", func, {
-    threshold: 0.2,
-    margin: "-200px -200px",
-  });
-  const fadeInTextT = new ScrollObserver(".fadein-textT", func, {
+  const drowBorder = (target, isIntersecting) => {
+    if (isIntersecting) {
+      target.classList.add("appear");
+    } else {
+      target.classList.remove("appear");
+    }
+  };
+
+  const fadeInImg = new ScrollObserver(".fadein-normal", fadein);
+  const fadeInTextR = new ScrollObserver(".fadein-textR", fadein, {
     threshold: 0,
     margin: "-200px -200px",
+  });
+  const fadeInTextT = new ScrollObserver(".fadein-textT", fadein, {
+    threshold: 0,
+    margin: "-200px -200px",
+  });
+  const border = new ScrollObserver(".border", drowBorder, {
+    threshold: 0.8,
+    margin: "0",
+    once: false,
   });
 }
 

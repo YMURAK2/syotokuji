@@ -20,7 +20,7 @@
     }
   }
 
-  &__heading {
+  &__meta {
     display: flex;
     align-items: center;
 
@@ -29,10 +29,14 @@
     }
   }
 
+  &__date {
+    width: 120px;
+  }
+
   &__category {
     margin: 0 20px;
     font-size: 12px;
-    width: 75px;
+    width: 80px;
 
     a {
       display: inline-block;

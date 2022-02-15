@@ -1,0 +1,219 @@
+@use "../global/index" as g;
+
+$left-pc: 50px;
+$left-sp: 30px;
+
+$border-width: 4px;
+
+.timeline {
+  &__heading {
+    max-width: 800px;
+    font-size: 20px;
+    line-height: 1.5em;
+    margin: 20px auto;
+  }
+
+  &__desc {
+    max-width: 800px;
+    line-height: 1.5em;
+    margin: 20px auto;
+  }
+
+  &__contact-btn {
+    display: flex;
+    justify-content: center;
+    gap: 0 40px;
+
+    @include g.mq(md) {
+      display: block;
+    }
+  }
+
+  &__list {
+    max-width: 1000px;
+    background-color: g.$l-gray;
+    padding: $left-pc;
+    margin: 0 auto;
+
+    @include g.mq(md) {
+      padding: $left-sp;
+    }
+  }
+
+  &__item-wrapper {
+    padding-left: $left-pc;
+
+    @include g.mq(md) {
+      padding-left: $left-sp;
+    }
+  }
+
+  &__item {
+    padding-top: 60px;
+    border-left: $border-width solid g.$gray;
+  }
+
+  &__date {
+    display: inline-block;
+    background-color: g.$black;
+    color: g.$white;
+    padding: 5px 10px;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: g.$black;
+      position: absolute;
+      left: calc(-1 * $left-pc);
+      transform: translateX(calc(-50% - $border-width / 2));
+
+      @include g.mq(md) {
+        left: calc(-1 * $left-sp);
+      }
+    }
+
+    &::after {
+      content: "";
+      width: $left-pc;
+      height: 1px;
+      background-color: g.$black;
+      position: absolute;
+      left: calc(-1 * $left-pc);
+      top: 13px;
+      transform: scale(0, 1);
+      transform-origin: right;
+      @include g.transition($duration: 0.8s, $delay: 0.8s);
+
+      @include g.mq(md) {
+        width: $left-sp;
+        left: calc(-1 * $left-sp);
+      }
+    }
+  }
+
+  &__inner {
+    position: relative;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 0;
+      background-color: g.$black;
+      @include g.transition($duration: 0.3s, $delay: 0.3s);
+    }
+
+    &::before {
+      top: 0;
+      right: 0;
+    }
+
+    &::after {
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    align-items: center;
+    gap: 20px 40px;
+    margin: 0 auto;
+    padding: 20px;
+    @include g.transition($duration: 0.8s);
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 1px;
+      background-color: g.$black;
+      @include g.transition($duration: 0.8s);
+    }
+
+    &::before {
+      top: 0;
+      right: 0;
+    }
+
+    &::after {
+      bottom: 0;
+      left: 0;
+    }
+
+    @include g.mq(lg) {
+      display: block;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / 3;
+    font-size: 28px;
+    font-family: g.$sec-font;
+    text-align: center;
+    line-height: 50px;
+
+    @include g.mq(md) {
+      font-size: 20px;
+    }
+  }
+
+  &__figure {
+    width: 100%;
+    height: 0;
+    padding-top: 56%;
+    position: relative;
+    margin: 0 auto;
+
+    @include g.mq(lg) {
+      // width: 100%;
+      margin: 0 auto 10px;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+  }
+
+  &__text {
+    line-height: 1.4em;
+
+    @include g.mq(lg) {
+      padding: 10px 0;
+    }
+    @include g.mq(md) {
+      font-size: 14px;
+    }
+  }
+
+  &__item.appear {
+    & .timeline {
+      &__date::after {
+        transform: scale(1);
+      }
+
+      &__inner::before,
+      &__inner::after {
+        height: 100%;
+      }
+
+      &__content::before,
+      &__content::after {
+        width: 100%;
+      }
+
+      &__content {
+        background-color: g.$white;
+      }
+    }
+  }
+}

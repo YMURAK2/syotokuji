@@ -1,0 +1,79 @@
+@use "../global/index" as g;
+
+.form {
+  max-width: 900px;
+  margin: -80px auto 0;
+  background-color: g.$l-gray;
+  padding: 50px 0 80px;
+
+  form {
+    margin-top: 30px;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: minmax(150px, auto) 1fr;
+    gap: 0 20px;
+    padding: 20px;
+
+    @include g.mq(lg) {
+      display: block;
+    }
+  }
+
+  &__title {
+    display: block;
+    width: 220px;
+    position: relative;
+    margin-right: 30px;
+
+    @include g.mq(lg) {
+      margin-bottom: 20px;
+    }
+
+    & .mandatory {
+      font-size: 12px;
+      background-color: g.$black;
+      color: g.$white;
+      padding: 2px 5px;
+      position: absolute;
+      right: 0;
+      top: 2px;
+    }
+  }
+
+  input:not([type="submit"]),
+  textarea {
+    border: 1px solid g.$gray;
+    padding: 5px 10px;
+    background-color: g.$white;
+  }
+
+  input[name="name"],
+  input[name="furigana"],
+  input[name="email"],
+  input[name="email-c"],
+  input[name="address"],
+  textarea {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  input[name*="tel"] {
+    width: 80px;
+  }
+
+  input[name="address"],
+  textarea {
+    max-width: none;
+  }
+
+  input[type="submit"] {
+    margin: 40px auto 0;
+  }
+
+  //確認画面でdeleteクラスがあれば表示しない
+  .mw_wp_form_confirm .delete {
+    display: none;
+  }
+}

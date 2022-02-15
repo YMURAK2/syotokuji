@@ -43,7 +43,7 @@
     <h3 class="section__title">
       <p class="section__title-main fadein-textT"><span><?php bloginfo('name') ?>の歴史</span>
       </p>
-      <p class="section__title-sub fadein-textR"><span>HISTORY</span>
+      <p class="section__title-sub section__title-sub--reverse fadein-textR"><span>HISTORY</span>
       </p>
     </h3>
     <div class="history">
@@ -102,7 +102,7 @@
         <li class="card__item fadein-normal">
           <div class="card__figure">
             <a href="<?php the_permalink() ?>">
-              <?php the_post_thumbnail('large', array('alt'=>get_post_field('post_name', get_the_ID()),'class'=>'card__img')) ?>
+              <?php the_post_thumbnail('large', array('alt'=>get_post_field('post_name', get_the_ID()),'class'=>'card__img hover-opacity')) ?>
             </a>
           </div>
           <div class="card__content">

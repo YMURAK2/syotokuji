@@ -23,7 +23,7 @@
     <h1>
       <a class="header__logo-wrapper"
         href="<?php echo esc_url(home_url()) ?>">
-        <div class="header__logo">
+        <div class="header__logo  hover-opacity">
           <img class="header__logo-img"
             src="<?php echo esc_url(get_template_directory_uri()."/assets/img/header-logo.png")?>"
             alt="header-icon">
@@ -52,9 +52,9 @@
     </nav>
     <div class="sns">
       <ul class="sns__list">
-        <li><a class="sns__item" href="#"><i class="fab fa-twitter-square"></i></a></li>
-        <li><a class="sns__item" href="#"><i class="fab fa-facebook-square"></i></a></li>
-        <li><a class="sns__item" href="#"><i class="fab fa-line"></i></a></li>
+        <li><a class="sns__item hover-opacity" href="#"><i class="fab fa-twitter-square"></i></a></li>
+        <li><a class="sns__item hover-opacity" href="#"><i class="fab fa-facebook-square"></i></a></li>
+        <li><a class="sns__item hover-opacity" href="#"><i class="fab fa-line"></i></a></li>
       </ul>
     </div>
     <div class="contact-btn">

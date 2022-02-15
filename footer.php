@@ -4,7 +4,7 @@
   <div class="footer__container">
     <a class="footer__logo-wrapper"
       href="<?php echo esc_url(home_url()) ?>">
-      <div class="footer__logo">
+      <div class="footer__logo hover-opacity">
         <img class="footer__logo-img"
           src="<?php echo esc_url(get_template_directory_uri()."/assets/img/footer-logo.png") ?>"
           alt="footer-icon">

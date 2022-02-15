@@ -8,6 +8,10 @@
   grid-template-rows: 350px auto;
   position: relative;
 
+  &:not(:last-of-type){
+    margin-bottom: 80px;
+  }
+
   @include g.mq(md) {
     display: block;
   }
@@ -75,6 +79,6 @@
     grid-column: 1 / 3;
     background-color: g.$l-gray;
     padding: 40px 40px;
-    margin-bottom: 80px;
+
   }
 }

@@ -43,10 +43,10 @@
     <ul class="news-list__list">
       <?php while (have_posts()):the_post(); ?>
       <li id="post-<?php the_ID() ?>" <?php post_class('news-list__item') ?>>
-        <div class="news-list__heading">
+        <div class="news-list__meta">
           <time class="news-list__date"
             datetime="<?php the_time('y-m-d')?>"><?php the_time('Y年m月d日') ?></time>
-          <div class="news-list__category"><?php the_category() ?>
+          <div class="news-list__category hover-opacity"><?php the_category() ?>
           </div>
         </div>
         <div class="news-list__title"><a
@@ -54,10 +54,10 @@
         </div></a>
       </li>
       <?php endwhile;?>
-      <?php endif; ?>
     </ul>
+    <?php endif; ?>
     <a
-      href="<?php echo esc_url(home_url("/category/")) ?>"><button
+      href="<?php echo esc_url(home_url("/latest/")) ?>"><button
         class="more-btn"><span>もっと見る</span></button></a>
   </div>
 </section>
@@ -153,7 +153,7 @@
   <div class="swiper swiper__gallery fadein-normal">
     <div class="swiper-wrapper">
       <?php while ($the_query->have_posts()):$the_query->the_post()?>
-      <div class="swiper-slide">
+      <div class="swiper-slide hover-opacity">
         <a href="<?php the_permalink() ?>">
           <?php the_post_thumbnail('large', array('alt'=>get_post_field('post_name', get_the_ID()))) ?>
         </a>

@@ -10,6 +10,12 @@
 @use "layout/history";
 @use "layout/greeting";
 @use "layout/career";
+@use "layout/archive";
+@use "layout/sidebar";
+@use "layout/latest-post";
+@use "layout/article";
+@use "layout/form";
+@use "layout/timeline";
 @use "layout/footer";
 
 @use "components/loading";
@@ -23,3 +29,5 @@
 @use "components/news-list";
 @use "components/swiper";
 @use "components/card";
+@use "components/page-nav";
+

@@ -43,7 +43,8 @@
       }
     }
 
-    &--footer {
+    &--footer,
+    &--gyoji {
       text-align: center;
       border: 1px solid g.$white;
 
@@ -62,6 +63,20 @@
         & span::before,
         span::after {
           background-color: g.$black;
+        }
+      }
+    }
+
+    &--gyoji {
+      border: 1px solid g.$black;
+
+      &:hover {
+        background-color: g.$black;
+        color: g.$white;
+
+        & span::before,
+        span::after {
+          background-color: g.$white;
         }
       }
     }

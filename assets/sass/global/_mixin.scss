@@ -1,10 +1,10 @@
 /////////////////Media Query///////////////////
 $breakpoints: (
-  "sm": "(max-width: 576px)",
-  "md": "(max-width: 768px)",
-  "lg": "(max-width: 992px)",
-  "xl": "(max-width: 1200px)",
-  "xxl": "(max-width: 1400px)",
+  "sm": "(max-width: 575px)",
+  "md": "(max-width: 767px)",
+  "lg": "(max-width: 991px)",
+  "xl": "(max-width: 1199px)",
+  "xxl": "(max-width: 1399px)",
 ) !default;
 
 @mixin mq($breakpoint: md) {
@@ -42,23 +42,23 @@ $breakpoints: (
     direction: $direction;
     timing-function: $timing-function;
   }
+}
 
-  @keyframes page-top {
-    0% {
-      transform: scale(1, 0);
-      transform-origin: 0 0;
-    }
-    50% {
-      transform: scale(1, 1);
-      transform-origin: 0 0;
-    }
-    50.1% {
-      transform: scale(1, 1);
-      transform-origin: 0 100%;
-    }
-    100% {
-      transform: scale(1, 0);
-      transform-origin: 0 100%;
-    }
+@keyframes page-top {
+  0% {
+    transform: scale(1, 0);
+    transform-origin: 0 0;
+  }
+  50% {
+    transform: scale(1, 1);
+    transform-origin: 0 0;
+  }
+  50.1% {
+    transform: scale(1, 1);
+    transform-origin: 0 100%;
+  }
+  100% {
+    transform: scale(1, 0);
+    transform-origin: 0 100%;
   }
 }
